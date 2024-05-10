@@ -1,0 +1,1 @@
+test_string = 'In the famous Christmas carol "The Twelve Days of Christmas," what fruit is mentioned that is traditionally associated with the second day of the song?'
