@@ -1,5 +1,6 @@
 #Game start
 #Hent kategorier fra brukeren
+import csv
 
 def get_categories(number_of_categories):
     categories = []
@@ -31,6 +32,8 @@ def create_categories(n_categories):
     for i in range(n_categories):
         categories[i] = input(f'Category {i+1}: ')
 
+
+
 # Håndtering av lagene
 class Team:
     def __init__(self, name):
@@ -52,23 +55,28 @@ class Question():
         self.is_active = True
     
     #Asks the AI for a question or gets the question from the database
-    def get_question(points):
-        pass
 
-    def get_answer():
+    def populate_question_from_bank(self, q_list, a_list, n):
+        self.question = q_list[n]
+        self.answer = a_list[n]
+
+    def get_question_from_LLM(points):
         pass
     
     def check_answer_given(answer_given):
         pass
     
+    def print_question(self):
+        print(self.question)
 
 class Game_board(): 
-    def __init__(self, n_categories, n_questions, category_list):
-        self.n_categories = n_categories
+    def __init__(self, n_questions, category_list):
+        self.n_categories = len(category_list)
         self.n_questions = n_questions
         self.category_list = category_list
+        self.llm_mode = False
         self.questions_matrix = self.create_questions()
-        self.print_board()
+        
     
     #Returns a matrix with n_categories x n_questions Question objects
     def create_questions(self):
@@ -77,6 +85,7 @@ class Game_board():
             category_questions = []
             for i in range(1, self.n_questions+1):
                 category_questions.append(Question(category, i*100))
+                category_questions[category][i]
             questions_list.append(category_questions)
         return questions_list
 
@@ -90,9 +99,9 @@ class Game_board():
                 if self.questions_matrix[j][i].is_active:
                     print(f'{self.questions_matrix[j][i].points}{self.questions_matrix[j][i].category[0]}', end ='\t')
                 else:
-                    print('----', end = '\t')
+                    print('---', end = '\t')
             print()
-    
+
     def points_left(self):
         sum = 0
         for questions_list in self.questions_matrix:
@@ -116,8 +125,13 @@ if __name__ == '__main__':
 
     n_categories = 5
 
-    categories = ['Football', 'Geography', 'Nature', 'History', 'Motorsport'] 
+    categories = ['Football', 'Geography', 'Nature', 'History', 'Motorsport']
     #categories = get_categories(n_categories)
-    game_board = Game_board(5, len(categories), categories)
+    game_board = Game_board(5, categories)
 
     game_board.print_board()
+    
+    chosen_category = input('Hvilken kategori? ')
+    chosen_value = input('Hvilken verdi? ')
+
+
