@@ -162,7 +162,7 @@ if __name__ == '__main__':
         print(f'Det er {game_board.points_left()} poeng igjen på brettet.')
         if check_if_winner(teams[0].score, teams[1].score, game_board.points_left()) == True:
             if teams[0].score > teams[1].score:
-                print('{teams[0].name} har vunnet!')
+                print(f'{teams[0].name} har vunnet!')
             elif teams[0].score < teams[1].score:
                 print(f'{teams[1].name} har vunnet!')
             play = 0
