@@ -1,6 +1,6 @@
 #Game start
 #Hent kategorier fra brukeren
-import csv
+import os #for front end
 
 def get_categories(number_of_categories):
     categories = []
@@ -40,17 +40,18 @@ class Team:
         self.name = name
         self.score = 0
         self.is_winner = False
-        self.is_done = False
+        self.is_done = False #Hva er denne til igjen?
 
-    def add_points(points_from_question):
-        score += points_from_question
+    def award_points(self, points_from_question):
+        self.score += points_from_question
+        print(f'Awarded {points_from_question} to {self.name}')
 
 
 class Question():
     def __init__(self, category, points):
         self.category = category
-        self.question = ''
-        self.answer = ''
+        self.question = 'Q ' + category + ' ' + str(points)
+        self.answer = 'A ' + category + ' ' + str(points)
         self.points = points
         self.is_active = True
     
@@ -63,11 +64,18 @@ class Question():
     def get_question_from_LLM(points):
         pass
     
-    def check_answer_given(answer_given):
-        pass
+    def check_answer_given(self,answer_given):
+        if answer_given.lower() == self.answer.lower():
+            return 1
+        else:
+            return 0
     
     def print_question(self):
         print(self.question)
+
+    def print_answer(self):
+        print(f'The correct answer is {self.answer}')
+
 
 class Game_board(): 
     def __init__(self, n_questions, category_list):
@@ -85,7 +93,7 @@ class Game_board():
             category_questions = []
             for i in range(1, self.n_questions+1):
                 category_questions.append(Question(category, i*100))
-                category_questions[category][i]
+                #category_questions[category][i]
             questions_list.append(category_questions)
         return questions_list
 
@@ -99,7 +107,7 @@ class Game_board():
                 if self.questions_matrix[j][i].is_active:
                     print(f'{self.questions_matrix[j][i].points}{self.questions_matrix[j][i].category[0]}', end ='\t')
                 else:
-                    print('---', end = '\t')
+                    print('----', end = '\t')
             print()
 
     def points_left(self):
@@ -113,14 +121,14 @@ class Game_board():
 
 # Håndtering av poeng
 
-def check_if_winner(team1_points, team2_points):
+def check_if_winner(team1_points, team2_points, points_left):
     point_delta = abs(team1_points - team2_points)
-    points_left = points_left()
     return points_left < point_delta
 
 if __name__ == '__main__':
     team1 = Team('Lag 1')
     team2 = Team('Lag 2')
+    teams = [team1, team2]
 
 
     n_categories = 5
@@ -128,10 +136,35 @@ if __name__ == '__main__':
     categories = ['Football', 'Geography', 'Nature', 'History', 'Motorsport']
     #categories = get_categories(n_categories)
     game_board = Game_board(5, categories)
-
-    game_board.print_board()
+    play = '1'
     
-    chosen_category = input('Hvilken kategori? ')
-    chosen_value = input('Hvilken verdi? ')
+    while(play == '1'):
+        os.system('clear')
+        game_board.print_board()
+        
+        chosen_category = int(input('Hvilken kategori? '))
+        chosen_value = int(input('Hvilken verdi? '))
+        active_question = game_board.questions_matrix[chosen_category][chosen_value]
+        print(f'Du har valgt kategori {active_question.category} med verdi {active_question.points}')
 
+        active_question.print_question()
 
+        active_team = teams[int(input('Hvilket lag skal svare? '))]
+
+        active_question.print_answer()
+        correct = int(input('Svarte laget korrekt? '))
+        if correct == True:
+            active_team.award_points(active_question.points)
+            active_question.is_active = False
+
+        print(f'Det står {teams[0].score} - {teams[1].score}')
+
+        print(f'Det er {game_board.points_left()} poeng igjen på brettet.')
+        if check_if_winner(teams[0].score, teams[1].score, game_board.points_left()) == True:
+            if teams[0].score > teams[1].score:
+                print('{teams[0].name} har vunnet!')
+            elif teams[0].score < teams[1].score:
+                print(f'{teams[1].name} har vunnet!')
+            play = 0
+        else:
+            play = input('Fortsette? 0/1 ')
