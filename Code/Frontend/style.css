@@ -98,11 +98,38 @@ button {
       "slnt" 0;
 }
 
-h2, label {
+#form-page {
+    display: grid;
+
+}
+
+h2 {
+    font-size: 40px;
     color: var(--accent-color);
+}
+
+.form-field {
+    font-size: 30px;
+    width: 600px;
+    margin: 15px;
+}
+
+label {
+    color: white;
+}
+
+input {
+    flex:1;
+    margin: 0px 20px;
 }
 
 input[type=text] {
     background-color: transparent;
-    color: white;
+    color: var(--accent-color);
+    font-size: 30px;
+    border: none;
+}
+
+input[type=text]:focus, textarea:focus {
+    outline: none;
 }
