@@ -3,3 +3,5 @@ SECRETS.txt
 *.mp3
 *.exe
 todo.txt
+.venv/
+__pycache__/
