@@ -10,54 +10,70 @@
     <div class="scoreboard">
         <div id="team1" class="team">TEAM 1</div>
         <div class="scores">
-            <span class="score">1200</span>
+            <span class="score">1001</span>
             <span>:</span>
-            <span class="score">2000</span>
+            <span class="score">1001</span>
         </div>
         <div id="team2" class="team">TEAM 2</div>
     </div>
     <div class="gameboard">
-        <div class="category">Football</div>
-        <div class="category">Geography</div>
-        <div class="category">Nature</div>
-        <div class="category">History</div>
-        <div class="category">Motorsport</div>
-        <button class="question-tile" id="0,0" onclick="log(this.id)">100</button>
-        <button class="question-tile" id="1,0" onclick="log(this.id)">100</button>
-        <button class="question-tile" id="2,0" onclick="log(this.id)">100</button>
-        <button class="question-tile" id="3,0" onclick="log(this.id)">100</button>
-        <button class="question-tile" id="4,0" onclick="log(this.id)">100</button>
-        <button class="question-tile" id="0,1" onclick="log(this.id)">200</button>
-        <button class="question-tile" id="1,1" onclick="log(this.id)">200</button>
-        <button class="question-tile" id="2,1" onclick="log(this.id)">200</button>
-        <button class="question-tile" id="3,1" onclick="log(this.id)">200</button>
-        <button class="question-tile" id="4,1" onclick="log(this.id)">200</button>
-        <button class="question-tile" id="0,2" onclick="log(this.id)">300</button>
-        <button class="question-tile" id="1,2" onclick="log(this.id)">300</button>
-        <button class="question-tile" id="2,2" onclick="log(this.id)">300</button>
-        <button class="question-tile" id="3,2" onclick="log(this.id)">300</button>
-        <button class="question-tile" id="4,2" onclick="log(this.id)">300</button>
-        <button class="question-tile" id="0,3" onclick="log(this.id)">400</button>
-        <button class="question-tile" id="1,3" onclick="log(this.id)">400</button>
-        <button class="question-tile" id="2,3" onclick="log(this.id)">400</button>
-        <button class="question-tile" id="3,3" onclick="log(this.id)">400</button>
-        <button class="question-tile" id="4,3" onclick="log(this.id)">400</button>
-        <button class="question-tile" id="0,4" onclick="log(this.id)">500</button>
-        <button class="question-tile" id="1,4" onclick="log(this.id)">500</button>
-        <button class="question-tile" id="2,4" onclick="log(this.id)">500</button>
-        <button class="question-tile" id="3,4" onclick="log(this.id)">500</button>
-        <button class="question-tile" id="4,4" onclick="log(this.id)">500</button>
+        <div class="category">Category 1</div>
+        <div class="category">Category 2</div>
+        <div class="category">Category 3</div>
+        <div class="category">Category 4</div>
+        <div class="category">Category 5</div>
+        <button class="question-tile" id="0,0">100</button>
+        <button class="question-tile" id="1,0">100</button>
+        <button class="question-tile" id="2,0">100</button>
+        <button class="question-tile" id="3,0">100</button>
+        <button class="question-tile" id="4,0">100</button>
+        <button class="question-tile" id="0,1">200</button>
+        <button class="question-tile" id="1,1">200</button>
+        <button class="question-tile" id="2,1">200</button>
+        <button class="question-tile" id="3,1">200</button>
+        <button class="question-tile" id="4,1">200</button>
+        <button class="question-tile" id="0,2">300</button>
+        <button class="question-tile" id="1,2">300</button>
+        <button class="question-tile" id="2,2">300</button>
+        <button class="question-tile" id="3,2">300</button>
+        <button class="question-tile" id="4,2">300</button>
+        <button class="question-tile" id="0,3">400</button>
+        <button class="question-tile" id="1,3">400</button>
+        <button class="question-tile" id="2,3">400</button>
+        <button class="question-tile" id="3,3">400</button>
+        <button class="question-tile" id="4,3">400</button>
+        <button class="question-tile" id="0,4">500</button>
+        <button class="question-tile" id="1,4">500</button>
+        <button class="question-tile" id="2,4">500</button>
+        <button class="question-tile" id="3,4">500</button>
+        <button class="question-tile" id="4,4">500</button>
     </div>
     <div id="question-card">
         <div class="card-heading">
-            <h1>FOOTBALL FOR 100 POINTS</h1>
+            <span id="question-category">CATEGORY</span>
+            <span> FOR </span>
+            <span id="question-points">AMOUNT OF</span>
+            <span> POINTS</span>
+            <button id="close-button" onclick="hide_question_card()">X</button>
         </div>
-        <div class="question-text">
-            <p>How many goals did Lionel Messi score in the CL final in 2014?</p>
+        <div class="qa-text" id="question-text"></div>
+        <div id="team-select-buttons">
+            <button id="team1-btn">Team 1</button>
+            <button id="team2-btn">Team 2</button>
+        </div>
+        <form id="ans-form" action="">
+            <label for="user-ans"></label>
+            <input type="text" id="user-ans-field" name="user-ans" placeholder="Answer"><br>
+            <button type="button" id="submit-ans-btn">Submit</button>
+        </form>
+        <div class="qa-text" id="answer-text"></div>
+        <div id="correct-buttons">
+            <button id="correct-btn">Correct</button>
+            <button id="incorrect-btn">Incorrect</button>
         </div>
     </div>
     <footer>
-        <button class="end-button">End Game</button>
+        <button id="end-button">End Game</button>
     </footer>
     <script src="../static/game.js"></script>
 </body>
