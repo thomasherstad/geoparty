@@ -1,4 +1,5 @@
 //TODO: Create function to update points
+//TODO: Get rid of placeholder question and response and use llm=undefined
 
 const teams = ["Red", "Blue"];
 const categories = [undefined]*5;
