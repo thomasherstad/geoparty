@@ -1,11 +1,13 @@
+//TODO: Create function to update points
+
 const teams = ["Red", "Blue"];
-const categories = ["Football", "Geography", "Nature", "History", "Motorsport"];
+const categories = [undefined]*5;
 const points = [100, 200, 300, 400, 500]; //Not used for tile html, but used for question heading
-let scores = [0, 0]
-let active_team = undefined; //This is jank and should be fixed properly
-let llm_question = "test";
+let scores = [undefined, undefined]
+let active_team = undefined;
+let llm_question = undefined;
 let user_answer = undefined;
-let llm_response = "test";
+let llm_response = undefined;
 
 const placeholder_question = "How many goals did Lionel Messi score in the 2014 CL campaign?";
 const placeholder_response = "That is wrong, the correct answer is 10.";
@@ -145,5 +147,5 @@ function show_response_text(){
 
 function create_response_text(){
   update_response_text(placeholder_response);
-  show_response_field();
+  show_response_text();
 }
