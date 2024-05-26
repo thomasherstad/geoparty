@@ -1,7 +1,7 @@
+//IDEA: Hamburger: Add points, reopen question, change category, end game, restart game
 //TODO: Create function to update points
-//TODO: Get rid of placeholder question and response and use llm=undefined
 
-const teams = ["Red", "Blue"];
+const teams = [undefined, undefined];
 const categories = [undefined]*5;
 const points = [100, 200, 300, 400, 500]; //Not used for tile html, but used for question heading
 let scores = [undefined, undefined]
@@ -10,11 +10,6 @@ let llm_question = undefined;
 let user_answer = undefined;
 let llm_response = undefined;
 
-const placeholder_question = "How many goals did Lionel Messi score in the 2014 CL campaign?";
-const placeholder_response = "That is wrong, the correct answer is 10.";
-
-
-const question_button = document.getElementById("0,0");
 const question_text = document.getElementById("question-text");
 const question_tiles = document.querySelectorAll(".question-tile");
 const category_tiles = document.querySelectorAll(".category");
@@ -33,24 +28,24 @@ const incorrect_btn = document.getElementById("incorrect-btn")
 populate_html(teams, categories);
 
 question_tiles.forEach(question_tile => {
-  question_tile.addEventListener("click", log_question_tile)
+  question_tile.addEventListener("click", log_question_tile);
   question_tile.addEventListener("click", show_question_card);
   question_tile.addEventListener("click", update_category_text);
   question_tile.addEventListener("click", update_points_text);
 });
 
-team1_answer_button.addEventListener("click", team_ans_button)
-team2_answer_button.addEventListener("click", team_ans_button)
+team1_answer_button.addEventListener("click", team_ans_button);
+team2_answer_button.addEventListener("click", team_ans_button);
 
-ans_submit_btn.addEventListener("click", set_user_answer)
-correct_btn.addEventListener("click", create_response_text)
+ans_submit_btn.addEventListener("click", set_user_answer);
+correct_btn.addEventListener("click", create_response_text);
 
 
 
 
 function show_question_card() {
   document.getElementById("question-card").style.display = "block";
-  update_question_text(placeholder_question) //Has to change to llm_question at some point
+  update_question_text(llm_question) //Has to change to llm_question at some point
 };
 
 //Destructor for question card
@@ -147,6 +142,6 @@ function show_response_text(){
 }
 
 function create_response_text(){
-  update_response_text(placeholder_response);
+  update_response_text(llm_response);
   show_response_text();
 }
