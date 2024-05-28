@@ -5,7 +5,7 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 #TODO: lage en egen prompt til å introdusere quizen
 #TODO: Log full quiz conversation
 
-with open("prompt_xmas.txt") as prompt_file:
+with open("code/backend/prompt.txt") as prompt_file:
     prompt = prompt_file.read()
 
 chat_model = "gpt-3.5-turbo"

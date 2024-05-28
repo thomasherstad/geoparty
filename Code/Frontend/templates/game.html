@@ -54,7 +54,7 @@
             <span> FOR </span>
             <span id="question-points">AMOUNT OF</span>
             <span> POINTS</span>
-            <button id="close-button" onclick="hide_question_card()">X</button>
+            <button id="close-button">X</button>
         </div>
         <div class="qa-text" id="question-text"></div>
         <div id="team-select-buttons">
@@ -63,7 +63,7 @@
         </div>
         <form id="ans-form" action="">
             <label for="user-ans"></label>
-            <input type="text" id="user-ans-field" name="user-ans" placeholder="Answer"><br>
+            <input type="text" id="user-ans-field" name="user-ans" placeholder="Answer" required><br>
             <button type="button" id="submit-ans-btn">Submit</button>
         </form>
         <div class="qa-text" id="answer-text"></div>
@@ -73,7 +73,6 @@
         </div>
     </div>
     <footer>
-        <button id="end-button">End Game</button>
     </footer>
     <script type="text/javascript"> const setup_data = {{ setup_dict|tojson }}; </script>
     <script src="../static/game.js"></script>

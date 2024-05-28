@@ -107,16 +107,6 @@ input[type=submit]:active{
     background-color: var(--main-color);
 }
 
-#end-button{
-    display: flex;
-    justify-content: flex-end;
-    margin: 60px;
-    font-size: 20px;
-    color: white;
-    background-color: transparent;
-    border: none;
-    padding: 20px;
-}
 
 #form-page {
     display: grid;
@@ -132,7 +122,7 @@ h2 {
     background-color: var(--main-color);
     position: absolute;
     width: 110%;
-    height: 75%;
+    height: 100%;
     top: 15%;
     left: -5%;
     z-index: 1;
@@ -149,13 +139,22 @@ h2 {
     text-align: center;
 }
 
-#question-text, #answer-text{
+#question-text{
+    color: white;
+    margin: 1em;
+    font-size: 30px;
+    height: auto;
+}
+
+#answer-text{
+    color: white;
     margin: 1em;
     font-size: 30px;
     height: auto;
 }
 
 #team-select-buttons, #correct-buttons {
+    display: none;
     margin: 1em;
     text-align: center;
 }
@@ -167,13 +166,15 @@ h2 {
 }
 
 #correct-btn {
+    width: 180px;
     background-color: green;
-    border: none;
+    border: solid white 1px;
 }
 
 #incorrect-btn {
+    width: 180px;
     background-color: red;
-    border: none;
+    border: solid white 1px;
 }
 
 #ans-form {
@@ -220,6 +221,8 @@ input[type=text]:focus, textarea:focus {
 }
 
 #close-button {
+    justify-content: flex-end;
+    margin-left: auto;
     color: white;
     font-size: 30px;
 }
