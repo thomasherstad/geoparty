@@ -1,15 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>chatJeopardy - Start</title>
-    <link rel="stylesheet" href="../static/style.css">
-</head>
-<body>
+{% extends "layout.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block body%}
     <h2>Geoparty Under Construction</h2>
     <form action="{{ url_for('setup') }}" method="GET">
         <input type="submit" value="To the game!">
     </form>
-</body>
+{% endblock%}
