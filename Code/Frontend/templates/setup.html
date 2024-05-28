@@ -10,7 +10,7 @@
 <body>
     <div id="form-page">
         <h2>SET UP YOUR GAME</h2>
-        <form action="{{ url_for("setup")}}" method="post">
+        <form action="/game" method="post">
             <div class="form-field">
                 <label for="team1_name">Team 1: </label>
                 <input type="text" id="team1_name" name="team1_name" placeholder="Name" required>
@@ -49,6 +49,5 @@
             <input type="reset" value="Reset">
         </form>
     </div>
-    <script src="../static/game.js"></script>
 </body>
 </html>

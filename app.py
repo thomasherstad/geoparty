@@ -7,6 +7,8 @@ static_dir = './Code/Frontend/static'
 
 app = Flask(__name__, static_folder=static_dir, template_folder=template_dir)
 
+SETUP_INFO = {}
+
 @app.route('/', methods=['GET', 'POST'])
 def home():
     if request.method == 'POST':
@@ -14,18 +16,17 @@ def home():
     else:
         return render_template('index.html')
 
-@app.route('/setup/', methods =['GET', 'POST'])
+@app.route('/setup', methods =['GET', 'POST'])
 def setup():
     if request.method == 'POST':
-        data = []
-        print(data)
-        names = ['team1_name', 'team2_name', 'category1', 'category2', 'category3', 'category4', 'category5', 'xmas-mode']
-        for name in names:
-            data.append(request.form.get(name))
-        return redirect(url_for('game', data = data))
+        return redirect(url_for('game'))
     return render_template('setup.html')
 
-@app.route('/game/', methods =['GET', 'POST'])
-def game(data = ['team1_name', 'team2_name', 'category1', 'category2', 'category3', 'category4', 'category5', 'xmas-mode']):
-    return render_template('game.html')
+@app.route('/game', methods =['GET', 'POST'])
+def game():
+    if request.method == 'POST':
+        SETUP_INFO = request.form
+        return render_template('game.html', setup_dict = SETUP_INFO)
+    else:
+        return render_template('setup.html')
 

@@ -1,14 +1,12 @@
-//IDEA: Hamburger: Add points, reopen question, change category, end game, restart game
-//TODO: Create function to update points
-
-const teams = [undefined, undefined];
-const categories = [undefined]*5;
+const teams = [setup_data['team1_name'], setup_data['team2_name']];
+const categories = [setup_data['category1'], setup_data['category2'], setup_data['category3'], setup_data['category4'], setup_data['category5']];
 const points = [100, 200, 300, 400, 500]; //Not used for tile html, but used for question heading
-let scores = [undefined, undefined]
+let scores = [0, 0]
 let active_team = undefined;
 let llm_question = undefined;
 let user_answer = undefined;
 let llm_response = undefined;
+
 
 const question_text = document.getElementById("question-text");
 const question_tiles = document.querySelectorAll(".question-tile");
@@ -24,9 +22,6 @@ const response_text_field = document.getElementById("answer-text");
 const correct_btn = document.getElementById("correct-btn");
 const incorrect_btn = document.getElementById("incorrect-btn")
 
-
-populate_html(teams, categories);
-
 question_tiles.forEach(question_tile => {
   question_tile.addEventListener("click", log_question_tile);
   question_tile.addEventListener("click", show_question_card);
@@ -40,12 +35,11 @@ team2_answer_button.addEventListener("click", team_ans_button);
 ans_submit_btn.addEventListener("click", set_user_answer);
 correct_btn.addEventListener("click", create_response_text);
 
-
-
+update_points()
 
 function show_question_card() {
   document.getElementById("question-card").style.display = "block";
-  update_question_text(llm_question) //Has to change to llm_question at some point
+  update_question_text(llm_question)
 };
 
 //Destructor for question card
@@ -72,13 +66,13 @@ function log_question_tile() {
 function update_category_text() {
   const n_category = Number(this.id.charAt(0));
   text = categories[n_category];
-  document.getElementById("question-category").innerHTML = text.toUpperCase();
+  document.getElementById("question-category").innerHTML = text.toUpperCase(); //Needs upper case
 };
 
 function update_points_text() {
   const n_points = Number(this.id.charAt(2))
   text = String(points[n_points]);
-  document.getElementById("question-points").innerHTML = text.toUpperCase();
+  document.getElementById("question-points").innerHTML = text;
 };
 
 function show_answer_field() {
@@ -113,7 +107,8 @@ function team_ans_button() {
   }
 };
 
-function populate_html(team_list, category_list) {
+//Currently not in use
+/* function populate_html(team_list, category_list) {
   document.getElementById("team1").innerHTML = team_list[0];
   document.getElementById("team1-btn").innerHTML = team_list[0];
   document.getElementById("team2").innerHTML = team_list[1];
@@ -121,13 +116,13 @@ function populate_html(team_list, category_list) {
 
   //Can populate the points here to add functionality for different point structures
 
-  let i = 0;
-  category_tiles.forEach(category_tile => {
-    category_tile.innerHTML = category_list[i];
-    console.log(i);
-    i = i+1;
-  })
-};
+   let i = 0;
+   category_tiles.forEach(category_tile => {
+     category_tile.innerHTML = category_list[i];
+     console.log(i);
+     i = i+1;
+   })
+}; */
 
 function set_user_answer(){
   user_answer = document.getElementById("user-ans-field").value;
@@ -144,4 +139,13 @@ function show_response_text(){
 function create_response_text(){
   update_response_text(llm_response);
   show_response_text();
+}
+
+function  update_points() {
+  document.getElementsByClassName("score")[0].innerHTML = scores[0];
+  document.getElementsByClassName("score")[1].innerHTML = scores[1];
+}
+
+function add_points(new_points, team_id){
+  points[team_id] = points[team_id] + points
 }

@@ -8,20 +8,20 @@
 </head>
 <body>
     <div class="scoreboard">
-        <div id="team1" class="team">TEAM 1</div>
+        <div id="team1" class="team">{{ setup_dict['team1_name'] }}</div>
         <div class="scores">
-            <span class="score">1001</span>
+            <span class="score">404</span>
             <span>:</span>
-            <span class="score">1001</span>
+            <span class="score">404</span>
         </div>
-        <div id="team2" class="team">TEAM 2</div>
+        <div id="team2" class="team">{{ setup_dict['team2_name'] }}</div>
     </div>
     <div class="gameboard">
-        <div class="category">Category 1</div>
-        <div class="category">Category 2</div>
-        <div class="category">Category 3</div>
-        <div class="category">Category 4</div>
-        <div class="category">Category 5</div>
+        <div id="c1" class="category">{{ setup_dict['category1'] }}</div>
+        <div id="c2" class="category">{{ setup_dict['category2'] }}</div>
+        <div id="c3" class="category">{{ setup_dict['category3'] }}</div>
+        <div id="c4" class="category">{{ setup_dict['category4'] }}</div>
+        <div id="c5" class="category">{{ setup_dict['category5'] }}</div>
         <button class="question-tile" id="0,0">100</button>
         <button class="question-tile" id="1,0">100</button>
         <button class="question-tile" id="2,0">100</button>
@@ -58,8 +58,8 @@
         </div>
         <div class="qa-text" id="question-text"></div>
         <div id="team-select-buttons">
-            <button id="team1-btn">Team 1</button>
-            <button id="team2-btn">Team 2</button>
+            <button id="team1-btn">{{ setup_dict['team1_name'] }}</button>
+            <button id="team2-btn">{{ setup_dict['team2_name'] }}</button>
         </div>
         <form id="ans-form" action="">
             <label for="user-ans"></label>
@@ -75,6 +75,7 @@
     <footer>
         <button id="end-button">End Game</button>
     </footer>
+    <script type="text/javascript"> const setup_data = {{ setup_dict|tojson }}; </script>
     <script src="../static/game.js"></script>
 </body>
 </html>
