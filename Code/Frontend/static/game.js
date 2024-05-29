@@ -96,7 +96,7 @@ function setActiveQuestion(){
 //getAnswer()
 //getResponse()
 
-//----destructor for informasjonssending----
+//----destructor for sending information----
 function destructQuestionInformation(){
   chosenCategory = undefined;
   chosenPoints = undefined;
@@ -126,6 +126,7 @@ function hideQuestionCard() {
   questionText.innerHTML = '';
   answerTextField.value = '';
   responseText.innerHTML = '';
+  teamAnswerButtons.style.display = "none";
   destructQuestionInformation();
 };
 
