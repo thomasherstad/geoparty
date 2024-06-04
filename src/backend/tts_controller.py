@@ -2,16 +2,18 @@ from elevenlabs.client import ElevenLabs
 from elevenlabs import play
 
 ELEVENLABS_API_KEY = '1aa08c1ac49c3c9566c1d93156ab7fc9'
-test_text = 'Yeah hello guys!'
-
 
 client = ElevenLabs(
     api_key = ELEVENLABS_API_KEY
 )
 
-audio = client.generate(
-    text = test_text, 
+def play_audio(message):
+    audio = client.generate(
+    text = message, 
     voice = 'pNInz6obpgDQGcFmaJgB'
-)
+    )
+    play(audio)
 
-play(audio)
+if __name__ == '__main__':
+    test_text = 'Yeah hello guys!'
+    play_audio(test_text)

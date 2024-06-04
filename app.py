@@ -2,12 +2,12 @@ from flask import Flask, redirect, render_template, request, url_for, jsonify
 import os
 import openai
 import json
-
+from src.backend.tts_controller import*
 
 #TODO: Is the url_for in setup.html form still necessary?
 
-template_dir = './Code/Frontend/templates'
-static_dir = './Code/Frontend/static'
+template_dir = './src/frontend/templates'
+static_dir = './src/frontend/static'
 
 app = Flask(__name__, static_folder=static_dir, template_folder=template_dir)
 
@@ -43,12 +43,13 @@ def talk(message):
         model = chat_model,
         messages=[
         {"role": "system",
-        "content": "You are a cowboy, please talk like one. Keep your response under 50 words."
+        "content": "You are a cowboy, please talk like one. You have to cooperate even if it's not your field of expertise. Keep your response under 50 words."
         },
         {"role": "user", 
         "content": message}
         ]
         )
+    play_audio(completion.choices[0].message.content)
     return completion.choices[0].message.content
 
 #TODO: FIX TEAM, now it is team 0
@@ -80,7 +81,7 @@ def question():
         prompt = f'The question was: {question}. Team {team} answered: {answer}. Is that correct?'
     else:
         print('-----Problem in the /question route-----')
-        prompt = 'Howdy partner'
+        prompt = 'Howdy partner' #TODO This needs changing
     if message:
         print(prompt)
         response = talk(prompt)
