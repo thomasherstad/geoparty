@@ -43,6 +43,31 @@ body {
     color: white;
     margin: 10px 20px;
     padding: 10px 20px;
+    display: flex;
+    background-color: red;
+}
+
+.flex {
+    flex: 1;
+    display: inline-flex;
+    justify-content: center;
+}
+
+.flex > div {
+    text-align: center;
+    padding: 1em;
+}
+
+.left div {
+    margin-right: auto;
+}
+
+.right div {
+    margin-left: auto;
+}
+
+#colon {
+    background-color: aqua;
 }
 
 .gameboard {

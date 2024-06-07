@@ -7,9 +7,15 @@
         <div class="scoreboard">
             <div id="team1" class="team">{{ setup_dict['team1_name'] }}</div>
             <div class="scores">
-                <span class="score">404</span>
-                <span>:</span>
-                <span class="score">404</span>
+                <div class="left flex">
+                    <div class="score">404</div>
+                </div>
+                <div class="center flex">
+                    <div id="colon">:</div>
+                </div>
+                <div class="right flex">
+                    <div class="score">404</div>
+                </div>
             </div>
             <div id="team2" class="team">{{ setup_dict['team2_name'] }}</div>
         </div>
