@@ -223,9 +223,10 @@ function clickIncorrectButton(){
 //Just a cosmetic way to do it for now
 function setInactiveQuestion(id){
   tile = document.getElementById(id);
-  tile.style.backgroundColor = '--var(main-color)';
-  tile.style.border = 'none';
-  tile.innerHTML = '';
+  //tile.style.backgroundColor = '--var(main-color)';
+  //tile.style.border = 'none';
+  //tile.innerHTML = '';
+  tile.style.visibility = 'hidden'
   //BUG: The following somehow only changes last tile, regardless of id
   //tile.style.display = 'none';
 };

@@ -49,8 +49,10 @@ def talk(message):
         "content": message}
         ]
         )
-    play_audio(completion.choices[0].message.content)
     return completion.choices[0].message.content
+
+# Need to include where it makes sense
+# play_audio(completion.choices[0].message.content)
 
 #TODO: FIX TEAM, now it is team 0
 @app.route('/question')
