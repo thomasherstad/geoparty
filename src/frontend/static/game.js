@@ -207,30 +207,22 @@ function awardPoints(awarded_points, team_id){
 };
 
 function clickCorrectButton(){
+  setInactiveQuestion(currentID); 
   awardPoints(chosenPoints, activeTeam);
   updatePointsDOM();
-  //points animation?
   hideQuestionCard();
-  setInactiveQuestion(currentID);
 }
 
 function clickIncorrectButton(){
-  //points animation?
-  hideQuestionCard();
   setInactiveQuestion(currentID);
+  hideQuestionCard();
 }
 
 //Just a cosmetic way to do it for now
 function setInactiveQuestion(id){
   tile = document.getElementById(id);
-  //tile.style.backgroundColor = '--var(main-color)';
-  //tile.style.border = 'none';
-  //tile.innerHTML = '';
   tile.style.visibility = 'hidden'
-  //BUG: The following somehow only changes last tile, regardless of id
-  //tile.style.display = 'none';
 };
-
 
 async function requestLLM(){
   updateQuestionInfo()

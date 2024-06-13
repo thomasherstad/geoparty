@@ -24,12 +24,6 @@ def introduce_quiz(team_1, team_2):
         )
     return completion.choices[0].message.content
 
-def set_category():
-    return input('Which category? ')
-
-def set_points():
-    return input('How many points? ')
-
 def ask_for_question(prompt, category, points):
     question_prompt = f'Give us a question about {category} worth {points} points'
     completion = openai.ChatCompletion.create(
@@ -60,16 +54,4 @@ def check_answer(answer):
 
 
 if __name__ == '__main__':
-    while True:
-        print(introduce_quiz('The bears', 'Team 2'))
-        category = set_category()
-        points = set_points()
-        question = ask_for_question(prompt, category, points)
-        print(question)
-        answer = input('Answer: ')
-        response = check_answer(answer)
-        print(response)
-        a = input("Continue? 1/0")
-        os.system('clear')
-        if a == '0':
-            break
+    pass

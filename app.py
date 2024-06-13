@@ -2,7 +2,8 @@ from flask import Flask, redirect, render_template, request, url_for, jsonify
 import os
 import openai
 import json
-from src.backend.tts_controller import*
+from src.backend.tts_controller import *
+from src.backend.prompt_handler import get_normal_prompt
 
 #TODO: Is the url_for in setup.html form still necessary?
 
@@ -12,10 +13,15 @@ static_dir = './src/frontend/static'
 app = Flask(__name__, static_folder=static_dir, template_folder=template_dir)
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
-chat_model = "gpt-3.5-turbo"
+
+gpt_4o = "gpt-4o"
+gpt_3_5 = "gpt-3.5-turbo"
+
+chat_model = gpt_4o
 
 SETUP_INFO = {}
 
+info_prompt = get_normal_prompt()
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
@@ -38,12 +44,12 @@ def game():
     else:
         return render_template('setup.html')
 
-def talk(message):
+def chat(message):
     completion = openai.ChatCompletion.create(
         model = chat_model,
         messages=[
         {"role": "system",
-        "content": "You are a cowboy, please talk like one. You have to cooperate even if it's not your field of expertise. Keep your response under 50 words."
+        "content": info_prompt
         },
         {"role": "user", 
         "content": message}
@@ -80,13 +86,13 @@ def question():
         prompt = f'The category is {category} We need a question worth {points} points'
     elif question != None and answer != None and team != None:
         print('answer if')
-        prompt = f'The question was: {question}. Team {team} answered: {answer}. Is that correct?'
+        prompt = f'For {points} points, the question was: {question}. Team {team} answered: {answer}. Is that correct?'
     else:
         print('-----Problem in the /question route-----')
         prompt = 'Howdy partner' #TODO This needs changing
     if message:
         print(prompt)
-        response = talk(prompt)
+        response = chat(prompt)
     else:
         response = ''
     return jsonify(response)
@@ -102,7 +108,7 @@ def ask():
     message = request.args.get('message')
     if message:
         print(message)
-        response = talk(message)
+        response = chat(message)
     else:
         response = ''
     return jsonify(response)
