@@ -1,5 +1,6 @@
 ## Fokus
 - Få elevenlabs til å fungere, helst på frontend
+- Question card er litt for stort for skjermen
 
 ## Bugs
 - Fiks så enter ikke går tilbake til setup
