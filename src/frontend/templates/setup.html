@@ -1,7 +1,9 @@
 {% extends "layout.html" %}
 
 {% block title %}Setup{% endblock %}
-
+{% block style %}
+<link rel="stylesheet" href="../static/setup.css">
+{% endblock %}
 {% block body %}
     <div id="form-page">
         <h2>SET UP YOUR GAME</h2>
@@ -12,36 +14,34 @@
             </div>
             <div class="form-field">
                 <label for="team2_name">Team 2: </label>
-                <input type="text" id="team2_name" name="team2_name" placeholder="Name"autocomplete="off" required><br>
+                <input type="text" id="team2_name" name="team2_name" placeholder="Name" autocomplete="off" required><br>
             </div>
             <div class="form-field">
                 <label for="category1">Category 1: </label>
-                <input type="text" id="category1" name="category1" placeholder="Category"autocomplete="off" required><br>
+                <input type="text" id="category1" name="category1" placeholder="Category" autocomplete="off" required><br>
             </div>
             <div class="form-field">
                 <label for="category2">Category 2: </label>
-                <input type="text" id="category2" name="category2" placeholder="Category"autocomplete="off" required><br>
+                <input type="text" id="category2" name="category2" placeholder="Category" autocomplete="off" required><br>
             </div>
             <div class="form-field">
                 <label for="category3">Category 3: </label>
-                <input type="text" id="category3" name="category3" placeholder="Category"autocomplete="off" required><br>
+                <input type="text" id="category3" name="category3" placeholder="Category" autocomplete="off" required><br>
             </div>
             <div class="form-field">
                 <label for="category4">Category 4: </label>
-                <input type="text" id="category4" name="category4" placeholder="Category"autocomplete="off" required><br>
+                <input type="text" id="category4" name="category4" placeholder="Category" autocomplete="off" required><br>
             </div>
             <div class="form-field">
                 <label for="category5">Category 5: </label>
-                <input type="text" id="category5" name="category5" placeholder="Category"autocomplete="off" required><br>
+                <input type="text" id="category5" name="category5" placeholder="Category" autocomplete="off" required><br>
             </div>
             
-            <label class="switch">Christmas mode: 
-                <input type="checkbox" name="xmas-mode">
-                <span class="slider"></span>
-            </label><br><br>
-
-            <input type="submit" value="Submit">
-            <input type="reset" value="Reset">
+            <br><br>
+            <div id="form-buttons">
+                <input type="submit" value="Submit">
+                <input type="reset" value="Reset">
+            </div>
         </form>
     </div>
 {% endblock%}
