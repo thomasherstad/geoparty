@@ -7,10 +7,14 @@ client = ElevenLabs(
     api_key = ELEVENLABS_API_KEY
 )
 
+standard = 'pNInz6obpgDQGcFmaJgB'
+john = 'sLjXPEgayrhC8RIDHCcV'
+
+
 def play_audio(message):
     audio = client.generate(
     text = message, 
-    voice = 'pNInz6obpgDQGcFmaJgB'
+    voice = john
     )
     play(audio)
 
