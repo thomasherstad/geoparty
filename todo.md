@@ -1,5 +1,5 @@
 ## Fokus
-- Få elevenlabs til å fungere, helst på frontend
+
 
 ## Bugs
 - Fiks så enter ikke går tilbake til setup
@@ -17,6 +17,7 @@
 - Question card er litt for stort for skjermen
 
 ## Finished
+- Få elevenlabs til å fungere mens spørsmålet står på skjermen
 - Legge til en mode dropdown i setup.html med bare normal for øyeblikket
 - Refactor game logic and llm controller
 - Flytte CSS til forskjellige filer

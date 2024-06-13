@@ -15,5 +15,5 @@ def play_audio(message):
     play(audio)
 
 if __name__ == '__main__':
-    test_text = 'Yeah hello guys!'
+    test_text = 'Hello guys!'
     play_audio(test_text)

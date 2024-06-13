@@ -55,6 +55,7 @@ def chat(message):
         "content": message}
         ]
         )
+    play_audio(completion.choices[0].message.content)
     return completion.choices[0].message.content
 
 # Need to include where it makes sense
