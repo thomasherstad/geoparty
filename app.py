@@ -55,7 +55,7 @@ def chat(message):
         "content": message}
         ]
         )
-    play_audio(completion.choices[0].message.content)
+    #play_audio(completion.choices[0].message.content)
     return completion.choices[0].message.content
 
 # Need to include where it makes sense
@@ -87,7 +87,7 @@ def question():
         prompt = f'The category is {category} We need a question worth {points} points'
     elif question != None and answer != None and team != None:
         print('answer if')
-        prompt = f'For {points} points, the question was: {question}. Team {team} answered: {answer}. Is that correct?'
+        prompt = f'For {points} points, the question was: {question}. The team {team} answered: {answer}. Is that correct?'
     else:
         print('-----Problem in the /question route-----')
         prompt = 'Howdy partner' #TODO This needs changing

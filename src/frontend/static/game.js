@@ -67,7 +67,7 @@ function updateQuestionInfo(){
   questionInfo.category = chosenCategory;
   questionInfo.points = chosenPoints;
   questionInfo.question = activeQuestion;
-  questionInfo.team = activeTeam;
+  questionInfo.team = teams[activeTeam];
   questionInfo.answer = userAnswer;
   msg = JSON.stringify(questionInfo)
 }
