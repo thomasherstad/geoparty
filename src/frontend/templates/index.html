@@ -1,10 +1,13 @@
 {% extends "layout.html" %}
 
 {% block title %}Home{% endblock %}
-
+{% block style %}<link rel="stylesheet" href="../static/index.css">{% endblock %}
 {% block body%}
-    <h2>Geoparty Under Construction</h2>
+    <h2>chatGeoParTy</h2>
+    <div id="img-container">
+        <div id="img-placeholder"></div>
+    </div>
     <form action="{{ url_for('setup') }}" method="GET">
-        <input type="submit" value="To the game!">
+        <input type="submit" value="PLAY">
     </form>
 {% endblock%}

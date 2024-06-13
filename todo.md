@@ -1,6 +1,5 @@
 ## Fokus
 - Få elevenlabs til å fungere, helst på frontend
-- Question card er litt for stort for skjermen
 
 ## Bugs
 - Fiks så enter ikke går tilbake til setup
@@ -15,6 +14,7 @@
 - Endre css så gameboard og question card matcher
 - Landing page
 - Gjøre submit-knappen samme størrelse som de andre
+- Question card er litt for stort for skjermen
 
 ## Finished
 - Legge til en mode dropdown i setup.html med bare normal for øyeblikket
