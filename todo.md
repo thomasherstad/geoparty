@@ -8,11 +8,13 @@
 - Questions card er gjennomsiktig
 - Question card er litt for stort for skjermen
 
-
 ## Playable
+- Legge til minuspoeng for feil svar
 - Endre css så gameboard og question card matcher
 - Landing page bilde
 - Gjøre submit-knappen samme størrelse som de andre
+- Pass knapp som eliminerer spørsmålet og kaller alle cowards for å ikke svare
+- Stoppe å lese spørsmålet når noen sier navnet sitt
 
 ## Finished
 - Få elevenlabs til å fungere mens spørsmålet står på skjermen
