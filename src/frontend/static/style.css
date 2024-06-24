@@ -102,6 +102,7 @@ button, input[type=submit], input[type=reset] {
     border: solid var(--accent-color) 1px;
     border-radius: 0%;
     transition: 0.3s;
+    padding: 0.25em;
 }
 
 input[type=submit] {
@@ -221,7 +222,6 @@ input[type=submit]:active{
     background-color: var(--accent-color);
     margin: 1em;
     font-size: 30px;
-    padding: 0.25em;
 }
 
 

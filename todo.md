@@ -1,8 +1,7 @@
 ## Fokus
-
+- Fiks så enter ikke går tilbake til setup
 
 ## Bugs
-- Fiks så enter ikke går tilbake til setup
 - Question tile forsvinner etter question card har forsvunnet. Burde være motsatt
 - Questions card er gjennomsiktig
 - Question card er litt for stort for skjermen
@@ -11,7 +10,8 @@
 - Endre css så gameboard og question card matcher
 - Landing page bilde
 - Pass knapp som eliminerer spørsmålet og kaller alle cowards for å ikke svare
-- Stoppe å lese spørsmålet når noen sier navnet sitt
+- Stoppe å lese spørsmålet når noen sier navnet sitt¨
+- Add an option to use tts
 
 ## Finished
 - Få elevenlabs til å fungere mens spørsmålet står på skjermen
