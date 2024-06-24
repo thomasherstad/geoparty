@@ -206,6 +206,11 @@ function awardPoints(awarded_points, team_id){
   scores[team_id] = scores[team_id] + awarded_points;
 };
 
+function removePoints(awarded_points, team_id){
+  scores[team_id] = scores[team_id] - awarded_points;
+  console.log("Removing " + awardPoints + " points from team " + teams[team_id])
+};
+
 function clickCorrectButton(){
   setInactiveQuestion(currentID); 
   awardPoints(chosenPoints, activeTeam);
@@ -215,6 +220,8 @@ function clickCorrectButton(){
 
 function clickIncorrectButton(){
   setInactiveQuestion(currentID);
+  removePoints(chosenPoints, activeTeam);
+  updatePointsDOM();
   hideQuestionCard();
 }
 

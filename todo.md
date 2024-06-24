@@ -1,6 +1,5 @@
 ## Fokus
 
-
 ## Bugs
 - Fiks så enter ikke går tilbake til setup
 - Stop chrome fra å gi forslag til form 
@@ -9,7 +8,6 @@
 - Question card er litt for stort for skjermen
 
 ## Playable
-- Legge til minuspoeng for feil svar
 - Endre css så gameboard og question card matcher
 - Landing page bilde
 - Gjøre submit-knappen samme størrelse som de andre
