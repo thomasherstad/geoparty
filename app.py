@@ -21,6 +21,7 @@ chat_model = gpt_4o
 
 SETUP_INFO = {}
 
+use_TTS = False
 info_prompt = get_normal_prompt()
 
 @app.route('/', methods=['GET', 'POST'])
@@ -39,7 +40,12 @@ def setup():
 @app.route('/game', methods =['GET', 'POST'])
 def game():
     if request.method == 'POST':
+        global use_TTS, SETUP_INFO
         SETUP_INFO = request.form
+        print(SETUP_INFO.get('tts-checkbox'))
+        if SETUP_INFO.get('tts-checkbox') == 'on':
+            use_TTS = True
+        print(f'Text to speech is set to {use_TTS}')
         return render_template('game.html', setup_dict = SETUP_INFO)
     else:
         return render_template('setup.html')
@@ -55,7 +61,9 @@ def chat(message):
         "content": message}
         ]
         )
-    play_audio(completion.choices[0].message.content)
+    print(f'Text to speech is set to: {use_TTS}, and its type is {type(use_TTS)}')
+    if use_TTS == True:
+        play_audio(completion.choices[0].message.content)
     return completion.choices[0].message.content
 
 # Need to include where it makes sense

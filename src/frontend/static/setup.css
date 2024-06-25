@@ -20,7 +20,6 @@ body {
       "slnt" 0;
 }
 
-
 #form-page {
     display: flex;
     flex-direction: column;
@@ -53,7 +52,6 @@ input {
     color: var(--accent-color);
     font-size: 30px;
     border: none;
-
 }
 
 #form-buttons {

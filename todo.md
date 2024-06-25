@@ -1,6 +1,5 @@
 ## Fokus
 
-
 ## Bugs
 - Question tile forsvinner etter question card har forsvunnet. Burde være motsatt
 - Questions card er gjennomsiktig
