@@ -69,7 +69,6 @@ def chat(message):
 # Need to include where it makes sense
 # play_audio(completion.choices[0].message.content)
 
-#TODO: FIX TEAM, now it is team 0
 @app.route('/question')
 def question():
     message = json.loads(request.args.get('message'))
@@ -122,3 +121,13 @@ def ask():
         response = ''
     return jsonify(response)
 
+
+@app.route('/pass')
+def pass_question():
+    message = request.args.get('message')
+    if message:
+        print(message)
+        response = chat("Both teams have passed the opportunity to answer. Please shame them and then give us the correct answer")
+    else:
+        response = ''
+    return jsonify(response)

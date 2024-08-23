@@ -13,16 +13,18 @@ let activeQuestion = undefined;
 let userAnswer = undefined;
 let llmResponse = undefined;
 let currentID = undefined;
+let passed = false;
 
 let questionInfo = {
   'category': '',
   'points': '',
   'team': '',
   'question': '',
-  'answer': ''
+  'answer': '',
+  'passed': ''
 };
 
-let msg = JSON.stringify(questionInfo)
+let msg = JSON.stringify(questionInfo);
 
 const questionText = document.getElementById("question-text");
 const questionTiles = document.querySelectorAll(".question-tile");
@@ -32,6 +34,7 @@ const categoryTiles = document.querySelectorAll(".category");
 const teamAnswerButtons = document.getElementById("team-select-buttons");
 const team1AnswerButton = document.getElementById("team1-btn");
 const team2AnswerButton = document.getElementById("team2-btn");
+const passButton = document.getElementById("pass-btn");
 
 const userAnsForm = document.getElementById("ans-form");
 const ansSubmitButton = document.getElementById("submit-ans-btn");
@@ -41,6 +44,7 @@ const correctButtons = document.getElementById("correct-buttons");
 const correctButton = document.getElementById("correct-btn");
 const incorrectButton = document.getElementById("incorrect-btn");
 const closeButton = document.getElementById("close-button");
+
 
 questionTiles.forEach(questionTile => {
   questionTile.addEventListener("click", logQuestionTile);
@@ -54,6 +58,7 @@ questionTiles.forEach(questionTile => {
 
 team1AnswerButton.addEventListener("click", teamAnsButton);
 team2AnswerButton.addEventListener("click", teamAnsButton);
+passButton.addEventListener("click", passQuestion);
 ansSubmitButton.addEventListener("click",clickAnsSubmit);
 correctButton.addEventListener("click", clickCorrectButton);
 incorrectButton.addEventListener("click", clickIncorrectButton);
@@ -69,8 +74,9 @@ function updateQuestionInfo(){
   questionInfo.question = activeQuestion;
   questionInfo.team = teams[activeTeam];
   questionInfo.answer = userAnswer;
+  questionInfo.passed = passed;
   msg = JSON.stringify(questionInfo)
-}
+};
 
 //----constructor for informasjonssending----
 /* function setActiveTeam() {
@@ -82,17 +88,17 @@ function updateQuestionInfo(){
 function setChosenPoints(){
   const nPoints = Number(this.id.charAt(2));
   chosenPoints = points[nPoints];
-}
+};
 
 function setChosenCategory(){
   const nCategory = Number(this.id.charAt(0));
   chosenCategory = categories[nCategory];
-}
+};
 
 //Quick and dirty to see if it works
 function setActiveQuestion(){
   activeQuestion = questionText.innerHTML;
-}
+};
 //getAnswer()
 //getResponse()
 
@@ -104,7 +110,8 @@ function destructQuestionInformation(){
   activeQuestion = undefined;
   userAnswer = undefined;
   llmResponse = undefined;
-}
+  passed = false
+};
 
 
 //Constructor for question card
@@ -143,7 +150,7 @@ function updateCategoryText() {
 
 function updatePointsText() {
   const nPoints = Number(this.id.charAt(2))
-  text = String(points[nPoints]);
+  text = String(points[nPoints])
   document.getElementById("question-points").innerHTML = text;
 };
 
@@ -171,6 +178,11 @@ function teamAnsButton() {
     team2AnswerButton.style.backgroundColor = "var(--accent-color)";
     team1AnswerButton.style.backgroundColor = "var(--main-color)";
   }
+};
+
+//TODO: Implement sending on button press
+function clickPassButton(){
+  passed = True
 };
 
 function setUserAnswer(){
@@ -236,14 +248,21 @@ async function requestLLM(){
   console.log('Requesting question...')
   console.log(msg)
   let response = await fetch("/question?message=" + msg);
-  let new_text = await response.json();
-  console.log(new_text)
+  let newText = await response.json();
+  console.log(newText)
   if (activeQuestion == undefined){
-    questionText.innerHTML = new_text;
+    questionText.innerHTML = newText;
     teamAnswerButtons.style.display = "block"
   }
   else if (activeQuestion){
-    responseText.innerHTML = new_text;
+    responseText.innerHTML = newText;
     showCorrectButtons();
   }
-} 
+};
+//Boilerplate still
+async function passQuestion() {
+  let response = await fetch("/question?message="+"pass")
+  let newText = await response.json();
+  console.log(newText);
+  responseText.innerHTML = newText;
+}

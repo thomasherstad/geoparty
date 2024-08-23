@@ -189,9 +189,13 @@ input[type=submit]:active{
     text-align: center;
 }
 
-#team1-btn, #team2-btn, #correct-btn, #incorrect-btn {
+#team1-btn, #team2-btn, #correct-btn, #incorrect-btn, #pass-btn {
     font-size: 30px;
     margin: 0.5em;
+}
+
+#pass-btn {
+    border: solid 1px white;
 }
 
 #correct-btn {

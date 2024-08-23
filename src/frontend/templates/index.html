@@ -3,11 +3,10 @@
 {% block title %}Home{% endblock %}
 {% block style %}<link rel="stylesheet" href="../static/index.css">{% endblock %}
 {% block body%}
-    <h2>chatGeoParTy</h2>
     <div id="img-container">
-        <div id="img-placeholder"></div>
+        <img src="../static/assets/logo_geoparty.png">
     </div>
     <form action="{{ url_for('setup') }}" method="GET">
-        <input type="submit" value="PLAY">
+        <input type="submit" value="Play">
     </form>
 {% endblock%}
