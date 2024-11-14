@@ -16,6 +16,17 @@ Navigate to [geoparty.thomasherstad.dev](https://geoparty.thomasherstad.dev) to 
 
 It is using my OpenAI API key which doesn't have much money on it. In case you want to clone the repo and host it with your own API key feel free to do so.
 
+## How to Play
+- The game is best played in-person on a TV or in an online call where one person is sharing their screen and controlling the game.
+- Set up the game by filling in the form with team names and categories. It can be fun to use creative categories and seeing what the AI model will do with it. 
+- The teams alternate choosing which category and difficulty they want the questions from. 
+- The first person to yell out their team name gets to answer the question. Choose the team that is going to answer and write the answer in the text field.
+- When the AI answers it will say whether or not the answer was correct. Click the button that represents the AI's decision.
+- The AI's decision word goes! if someone manages to trick it with their answer or it makes a mistake, I think it's funny to leave that in, but that is of course up to you.
+- A correct answer gives the team the score of the card, and a wrong answer gives the team negative amount of points.
+- The game will play out until there are no more questions left on the board. There is no winning screen or calculations about one team being too far ahead to be caught.
+- If you want to start a new game, go back to the main page and set it up again.
+
 ## Usage
 
 ## Contributing
