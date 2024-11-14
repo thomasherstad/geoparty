@@ -19,3 +19,4 @@ It is using my OpenAI API key which doesn't have much money on it. In case you w
 ## Usage
 
 ## Contributing
+Contributions are of course welcome, but I am currently rewriting the backend in Go with a focus on a reliable and RESTful API as well as adding a PostgreSQL database.
